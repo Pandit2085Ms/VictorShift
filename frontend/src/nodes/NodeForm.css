@@ -1,0 +1,20 @@
+/* NodeForm.css */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  color: #444;
+}
