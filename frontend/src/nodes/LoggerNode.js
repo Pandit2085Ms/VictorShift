@@ -1,7 +1,7 @@
 // LoggerNode.js
 import React from 'react';
 import { Position } from 'reactflow';
-import { BaseNode } from './BaseNode';
+import { BaseNode } from './BaseNode.js';
 import './NodeForm.css';
 
 

@@ -4,6 +4,7 @@ import { DraggableNode } from './draggableNode.js';
 import { useReactFlow } from 'reactflow';
 import { submitPipeline } from './submit.js';
 
+
 export const PipelineToolbar = () => {
   const { getNodes, getEdges } = useReactFlow();
 
@@ -26,6 +27,11 @@ export const PipelineToolbar = () => {
         <DraggableNode type='llm' label='LLM' />
         <DraggableNode type='customOutput' label='Output' />
         <DraggableNode type='text' label='Text' />
+        <DraggableNode type='math' label='Math' />
+        <DraggableNode type='toggle' label='Toggle' />
+        <DraggableNode type='delay' label='Delay' />
+        <DraggableNode type='logger' label='Logger' />
+        <DraggableNode type='image' label='Image' />
       </div>
     </div>
   );

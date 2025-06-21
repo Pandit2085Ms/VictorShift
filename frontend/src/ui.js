@@ -3,23 +3,32 @@ import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './store.js';
 import { shallow } from 'zustand/shallow';
 
-// Import all node components
 import { InputNode } from './nodes/inputNode.js';
 import { LLMNode } from './nodes/llmNode.js';
 import { OutputNode } from './nodes/outputNode.js';
 import { TextNode } from './nodes/textNode.js';
+import { MathNode } from './nodes/MathNode.js';
+import { ToggleNode } from './nodes/ToggleNode.js';
+import { DelayNode } from './nodes/DelayNode.js';
+import { LoggerNode } from './nodes/LoggerNode.js';
+import { ImageNode } from './nodes/ImageNode.js';
 
 import 'reactflow/dist/style.css';
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true };
 
-// Define available node types
+// Register all node components here
 const nodeTypes = {
   customInput: InputNode,
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  math: MathNode,
+  toggle: ToggleNode,
+  delay: DelayNode,
+  logger: LoggerNode,
+  image: ImageNode,
 };
 
 const selector = (state) => ({
@@ -46,15 +55,15 @@ export const PipelineUI = () => {
     onConnect,
   } = useStore(selector, shallow);
 
-  const getInitNodeData = (nodeID, type) => {
-    return { id: nodeID, nodeType: type };
-  };
+  const getInitNodeData = (nodeID, type) => ({
+    id: nodeID,
+    nodeType: type,
+  });
 
   const onDrop = useCallback(
     (event) => {
       event.preventDefault();
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-
       const rawData = event.dataTransfer.getData('application/reactflow');
       if (!rawData) return;
 
